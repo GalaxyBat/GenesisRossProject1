@@ -7,4 +7,18 @@ public partial class CarLotForm : Form
         InitializeComponent();
     }
 
+    private void addCarButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void removeCarButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+
+    }
 }

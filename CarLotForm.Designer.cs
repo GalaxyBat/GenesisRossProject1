@@ -74,6 +74,7 @@
             addCarButton.TabIndex = 3;
             addCarButton.Text = "Add Car";
             addCarButton.UseVisualStyleBackColor = true;
+            addCarButton.Click += addCarButton_Click;
             // 
             // removeCarButton
             // 
@@ -84,6 +85,7 @@
             removeCarButton.TabIndex = 4;
             removeCarButton.Text = "Purchase Car";
             removeCarButton.UseVisualStyleBackColor = true;
+            removeCarButton.Click += removeCarButton_Click;
             // 
             // shopperInfoLabel
             // 
@@ -104,6 +106,7 @@
             button1.TabIndex = 6;
             button1.Text = "Inventory Information";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // CarLotForm
             // 

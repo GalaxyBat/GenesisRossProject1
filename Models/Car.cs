@@ -20,10 +20,6 @@ public class Car
     /// <exception cref="ArgumentException"></exception>
     public Car(string? make, string? model, decimal mpg, decimal price)
     {
-        Make = make;
-        Model = model;
-        Mpg = mpg;
-        Price = price;
 
         if (string.IsNullOrWhiteSpace(make))
         {
@@ -44,6 +40,11 @@ public class Car
         {
             throw new ArgumentException("Price can not be less than 0 dollars or more than 200,000 dollars");
         }
+
+        Make = make;
+        Model = model;
+        Mpg = mpg;
+        Price = price;
 
     }
 
