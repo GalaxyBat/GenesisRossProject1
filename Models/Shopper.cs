@@ -1,16 +1,18 @@
-﻿namespace GenesisRossProject1.Models;
+﻿using System.Text;
+
+namespace GenesisRossProject1.Models;
 
 public class Shopper
 {
     public string? Name { get; set; }
     public decimal MoneyAvailable { get; set; }
-    private List<Car> _cars;
+    public List<Car> Cars { get; }
 
     public Shopper(string? name, decimal moneyAvailable)
     {
         Name = name;
         MoneyAvailable = moneyAvailable;
-        _cars = [];
+        Cars = [];
 
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -30,7 +32,16 @@ public class Shopper
 
     public void PurchaseCar(Car car)
     { 
-        _cars.Add(car);
+        Cars.Add(car);
         MoneyAvailable -= car.Price + CarLot.TaxRate;
+    }
+
+    override
+        public string ToString()
+    {
+        var shopperBuilder = new StringBuilder();
+        shopperBuilder.AppendLine("Shopper: " + Name + "      Funds Available: $" + MoneyAvailable.ToString("C"));
+        shopperBuilder.AppendLine("\n" + "# of Cars Purchased: " + Cars);
+        return shopperBuilder.ToString();
     }
 }

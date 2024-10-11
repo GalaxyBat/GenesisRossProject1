@@ -1,4 +1,6 @@
-﻿namespace GenesisRossProject1.Models;
+﻿using System.Text;
+
+namespace GenesisRossProject1.Models;
 
 /// <summary>
 /// The Class CarLot
@@ -87,7 +89,7 @@ public class CarLot
     }
 
     /// <summary>
-    /// Adds a car to the inventory by the make, model,. mpg, and price
+    /// Adds a car to the inventory by the make, model, mpg, and price
     /// </summary>
     /// <param name="make">The make of the car</param>
     /// <param name="model">The model of the car</param>
@@ -98,6 +100,7 @@ public class CarLot
         var newCar = new Car(make, model, mpg, price);
         Inventory.Add(newCar);
     }
+
 
     /// <summary>
     /// Calculates the total cost of your purchases
@@ -171,5 +174,17 @@ public class CarLot
         return worstMpgCar;
     }
 
+    override
+        public string ToString()
+    {
+        var carLotBuilder = new StringBuilder();
+        carLotBuilder.AppendLine("Inventory of " + InventoryCount + " cars" + "\n" + Inventory);
+        carLotBuilder.AppendLine("\n" + "Most expensive" + "\n" + FindMostExpensiveCar());
+        carLotBuilder.AppendLine("\n" + "Least expensive" + "\n" + FindLeastExpensiveCar());
+        carLotBuilder.AppendLine("\n" + "Best MPG" + "\n" + FindBestMpgCar());
+        carLotBuilder.AppendLine("\n" + "Worst" + "\n" + FindWorstMpgCar());
+
+        return carLotBuilder.ToString();
+    }
     
 }
