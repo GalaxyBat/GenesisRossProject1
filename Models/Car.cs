@@ -55,7 +55,7 @@ public class Car
     override
         public string ToString()
     {
-        return Make + " " + Model + " $" + Price.ToString("C") + " " + Mpg.ToString("F1") + "mpg";
+        return Make + " " + Model + " " + Price.ToString("C") + " " + Mpg.ToString("F1") + "mpg";
     }
 
 }

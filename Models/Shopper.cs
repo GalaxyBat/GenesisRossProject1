@@ -56,8 +56,8 @@ public class Shopper
         public string ToString()
     {
         var shopperBuilder = new StringBuilder();
-        shopperBuilder.AppendLine("Shopper: " + Name + "      Funds Available: $" + MoneyAvailable.ToString("C"));
-        shopperBuilder.AppendLine("\n" + "# of Cars Purchased: " + Cars);
+        shopperBuilder.AppendLine("Shopper: " + Name + "      Funds Available: " + MoneyAvailable.ToString("C"));
+        shopperBuilder.AppendLine("\n" + "# of Cars Purchased: " + Cars.Count);
         return shopperBuilder.ToString();
     }
 }

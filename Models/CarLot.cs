@@ -89,6 +89,15 @@ public class CarLot
     }
 
     /// <summary>
+    /// Adds a car to the inventory
+    /// </summary>
+    /// <param name="car">The car added to the inventory</param>
+    public void AddCar(Car car)
+    {
+        Inventory.Add(car);
+    }
+
+    /// <summary>
     /// Adds a car to the inventory by the make, model, mpg, and price
     /// </summary>
     /// <param name="make">The make of the car</param>
@@ -121,9 +130,10 @@ public class CarLot
     public Car? FindLeastExpensiveCar()
     {
         Car? leastExpensiveCar = null;
-        const decimal minPrice = decimal.MaxValue;
+        var minPrice = decimal.MaxValue;
         foreach (var car in Inventory.Where(car => car.Price < minPrice))
         {
+            minPrice = car.Price;
             leastExpensiveCar = car;
         }
         return leastExpensiveCar;
@@ -136,9 +146,10 @@ public class CarLot
     public Car? FindMostExpensiveCar()
     {
         Car? mostExpensiveCar = null;
-        const decimal maxPrice = decimal.MinValue;
+        var maxPrice = decimal.MinValue;
         foreach (var car in Inventory.Where(car => car.Price > maxPrice))
         {
+            maxPrice = car.Price;
             mostExpensiveCar = car;
         }
         return mostExpensiveCar;
@@ -151,9 +162,10 @@ public class CarLot
     public Car? FindBestMpgCar()
     {
         Car? bestMpgCar = null;
-        const decimal bestMpg = decimal.MinValue;
+        var bestMpg = decimal.MinValue;
         foreach (var car in Inventory.Where(car => car.Mpg > bestMpg))
         {
+            bestMpg = car.Mpg;
             bestMpgCar = car;
         }
         return bestMpgCar;
@@ -166,9 +178,10 @@ public class CarLot
     public Car? FindWorstMpgCar()
     {
         Car? worstMpgCar = null;
-        const decimal worstMpg = decimal.MaxValue;
+        var worstMpg = decimal.MaxValue;
         foreach (var car in Inventory.Where(car => car.Mpg < worstMpg))
         {
+            worstMpg = car.Mpg;
             worstMpgCar = car;
         }
         return worstMpgCar;
@@ -178,7 +191,11 @@ public class CarLot
         public string ToString()
     {
         var carLotBuilder = new StringBuilder();
-        carLotBuilder.AppendLine("Inventory of " + InventoryCount + " cars" + "\n" + Inventory);
+        carLotBuilder.AppendLine("Inventory of " + InventoryCount + " cars");
+        foreach (var car in Inventory)
+        {
+            carLotBuilder.AppendLine(car.ToString());
+        }
         carLotBuilder.AppendLine("\n" + "Most expensive" + "\n" + FindMostExpensiveCar());
         carLotBuilder.AppendLine("\n" + "Least expensive" + "\n" + FindLeastExpensiveCar());
         carLotBuilder.AppendLine("\n" + "Best MPG" + "\n" + FindBestMpgCar());

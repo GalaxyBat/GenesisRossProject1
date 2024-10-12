@@ -36,7 +36,7 @@
             modelTXB = new TextBox();
             mpgTXB = new TextBox();
             priceTXB = new TextBox();
-            button1 = new Button();
+            addBTN = new Button();
             cancelButton = new Button();
             SuspendLayout();
             // 
@@ -108,16 +108,16 @@
             priceTXB.Size = new Size(123, 23);
             priceTXB.TabIndex = 7;
             // 
-            // button1
+            // addBTN
             // 
-            button1.Font = new Font("Segoe UI", 14F);
-            button1.Location = new Point(40, 374);
-            button1.Name = "button1";
-            button1.Size = new Size(125, 49);
-            button1.TabIndex = 8;
-            button1.Text = "Add Car";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            addBTN.Font = new Font("Segoe UI", 14F);
+            addBTN.Location = new Point(40, 374);
+            addBTN.Name = "addBTN";
+            addBTN.Size = new Size(125, 49);
+            addBTN.TabIndex = 8;
+            addBTN.Text = "Add";
+            addBTN.UseVisualStyleBackColor = true;
+            addBTN.Click += addButton_Click;
             // 
             // cancelButton
             // 
@@ -136,7 +136,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(440, 491);
             Controls.Add(cancelButton);
-            Controls.Add(button1);
+            Controls.Add(addBTN);
             Controls.Add(priceTXB);
             Controls.Add(mpgTXB);
             Controls.Add(modelTXB);
@@ -161,7 +161,7 @@
         private TextBox modelTXB;
         private TextBox mpgTXB;
         private TextBox priceTXB;
-        private Button button1;
+        private Button addBTN;
         private Button cancelButton;
     }
 }

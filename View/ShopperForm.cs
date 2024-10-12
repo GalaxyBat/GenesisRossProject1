@@ -4,7 +4,7 @@ namespace GenesisRossProject1.View;
 
 public partial class ShopperForm : Form
 {
-    public Shopper Shopper = null;
+    public Shopper Shopper = null!;
     public ShopperForm()
     {
         InitializeComponent();
@@ -12,20 +12,30 @@ public partial class ShopperForm : Form
 
     private void addShopperBTN_Click(object sender, EventArgs e)
     {
-        if (IsValidUserEntry())
+        try
         {
-            var name = nameTXB.Text;
-            var moneyAvailable = Convert.ToDecimal(moneyAvailableTXB.Text);
-            Shopper = new Shopper(name, moneyAvailable);
-            DialogResult = DialogResult.OK;
+            if (IsValidUserEntry())
+            {
+                var name = nameTXB.Text;
+                var moneyAvailable = Convert.ToDecimal(moneyAvailableTXB.Text);
+                Shopper = new Shopper(name, moneyAvailable);
+                DialogResult = DialogResult.OK;
+            }
         }
-        Close();
-
+        catch (ArgumentException exception)
+        {
+            Console.WriteLine(exception.Message);
+        }
+        finally
+        {
+            Close();
+        }
+        
     }
 
     private void cancelBTN_Click(object sender, EventArgs e)
     {
-
+        Close();
     }
 
     private bool IsValidUserEntry()

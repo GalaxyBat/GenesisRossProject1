@@ -1,22 +1,43 @@
-﻿using System.Diagnostics;
+﻿using GenesisRossProject1.Models;
 
 namespace GenesisRossProject1.View;
 
 public partial class CarForm : Form
 {
+    public Car Car = null!;
     public CarForm()
     {
         InitializeComponent();
     }
 
-    private void button1_Click(object sender, EventArgs e)
+    private void addButton_Click(object sender, EventArgs e)
     {
-
+        try
+        {
+            if (IsValidUserEntry())
+            {
+                var make = makeTXB.Text;
+                var model = modelTXB.Text;
+                var mpg = Convert.ToDecimal(mpgTXB.Text);
+                var price = Convert.ToDecimal(priceTXB.Text);
+                Car = new Car(make, model, mpg, price);
+                DialogResult = DialogResult.OK;
+            }
+        }
+        catch (ArgumentException exception)
+        {
+            Console.WriteLine(exception.Message);
+        }
+        finally
+        {
+            Close();
+        }
+        
     }
 
     private void cancelButton_Click(object sender, EventArgs e)
     {
-        
+        Close();
     }
 
     private bool IsValidUserEntry()
