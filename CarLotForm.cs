@@ -10,7 +10,11 @@ public partial class CarLotForm : Form
 {
     private CarForm _carForm = null!;
     private ShopperForm _shopperForm = null!;
-    private CarLot _carLot;
+    private readonly CarLot _carLot;
+
+    /// <summary>
+    /// The constructor for CarLotForm
+    /// </summary>
     public CarLotForm()
     {
         InitializeComponent();
@@ -18,13 +22,22 @@ public partial class CarLotForm : Form
         LoadInventory();
     }
 
+    /// <summary>
+    /// Preloads Car Lot
+    /// </summary>
     private void LoadInventory()
     {
-        foreach (Car car in _carLot.Inventory)
+        foreach (var car in _carLot.Inventory)
         {
             carLotListBox.Items.Add($"{car.Make} {car.Model} {car.Price:C} {car.Mpg:F1}");
         }
     }
+
+    /// <summary>
+    /// Adds a car to the carLotListBox
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void addCarButton_Click(object sender, EventArgs e)
     {
         try
@@ -44,6 +57,9 @@ public partial class CarLotForm : Form
 
     }
 
+    /// <summary>
+    /// Message box showing the inventory of the car lot
+    /// </summary>
     private void InventoryMessageBox()
     {
         var inventory = _carLot.ToString();
@@ -52,21 +68,44 @@ public partial class CarLotForm : Form
         MessageBox.Show(inventory, caption, buttons);
     }
 
-    private void ErrorMessage(string errorMessage)
+    /// <summary>
+    /// Shows an error message if an error occurs
+    /// </summary>
+    /// <param name="errorMessage"></param>
+    private static void ErrorMessage(string errorMessage)
     {
        const string caption = "Error Message";
        const MessageBoxButtons buttons = MessageBoxButtons.OK;
        MessageBox.Show(errorMessage, caption, buttons);
     }
 
-    private void NotEnoughMoney()
+    /// <summary>
+    /// Tells Shopper that they don't have enough money
+    /// </summary>
+    private static void NotEnoughMoney()
     {
         const string message = "Sorry, you don't have enough funds available for this car purchase";
-        const string caption = "The Inventory";
+        const string caption = "Notification";
         const MessageBoxButtons buttons = MessageBoxButtons.OK;
         MessageBox.Show(message, caption, buttons);
     }
 
+    /// <summary>
+    /// Congratulates the shopper on their purchase
+    /// </summary>
+    private static void Congratulations()
+    {
+        const string message = "Congratulations on your purchase";
+        const string caption = "Notification";
+        const MessageBoxButtons buttons = MessageBoxButtons.OK;
+        MessageBox.Show(message, caption, buttons);
+    }
+
+    /// <summary>
+    /// Adds a car to the shopper while removing a car from the car lot
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void purchaseCarButton_Click(object sender, EventArgs e)
     {
         try
@@ -81,6 +120,7 @@ public partial class CarLotForm : Form
                 carLotListBox.Refresh();
                 _shopperForm.Shopper.PurchaseCar(selectedCar);
                 shopperInfoTXB.Text = _shopperForm.Shopper.ToString();
+                Congratulations();
             }
             else
             {
@@ -93,6 +133,12 @@ public partial class CarLotForm : Form
         }
 
     }
+
+    /// <summary>
+    /// Adds shopper to the main form
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void addShopperBTN_Click(object sender, EventArgs e)
     {
         try
@@ -108,6 +154,11 @@ public partial class CarLotForm : Form
         
     }
 
+    /// <summary>
+    /// Allows for the Inventory Message Box to appear when pressing the button
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void inventoryBTN_Click(object sender, EventArgs e)
     {
         InventoryMessageBox();

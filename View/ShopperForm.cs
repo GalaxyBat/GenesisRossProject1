@@ -14,13 +14,11 @@ public partial class ShopperForm : Form
     {
         try
         {
-            if (IsValidUserEntry())
-            {
-                var name = nameTXB.Text;
-                var moneyAvailable = Convert.ToDecimal(moneyAvailableTXB.Text);
-                Shopper = new Shopper(name, moneyAvailable);
-                DialogResult = DialogResult.OK;
-            }
+            if (!IsValidUserEntry()) return;
+            var name = nameTXB.Text;
+            var moneyAvailable = Convert.ToDecimal(moneyAvailableTXB.Text);
+            Shopper = new Shopper(name, moneyAvailable);
+            DialogResult = DialogResult.OK;
         }
         catch (ArgumentException exception)
         {
@@ -69,7 +67,7 @@ public partial class ShopperForm : Form
             return false;
         }
 
-        if (isNameDecimal)
+        if (!isNameDecimal) return true;
         {
             const string message = "You did not enter a name. Please enter a name.";
             const string caption = "Error Detected in Input";
@@ -77,10 +75,9 @@ public partial class ShopperForm : Form
             MessageBox.Show(message, caption, buttons);
             return false;
         }
-        return true;
     }
 
-    private void ErrorMessage(string errorMessage)
+    private static void ErrorMessage(string errorMessage)
     {
         const string caption = "Error Message";
         const MessageBoxButtons buttons = MessageBoxButtons.OK;

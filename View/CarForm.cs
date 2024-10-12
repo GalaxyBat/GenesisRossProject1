@@ -14,15 +14,13 @@ public partial class CarForm : Form
     {
         try
         {
-            if (IsValidUserEntry())
-            {
-                var make = makeTXB.Text;
-                var model = modelTXB.Text;
-                var mpg = Convert.ToDecimal(mpgTXB.Text);
-                var price = Convert.ToDecimal(priceTXB.Text);
-                Car = new Car(make, model, mpg, price);
-                DialogResult = DialogResult.OK;
-            }
+            if (!IsValidUserEntry()) return;
+            var make = makeTXB.Text;
+            var model = modelTXB.Text;
+            var mpg = Convert.ToDecimal(mpgTXB.Text);
+            var price = Convert.ToDecimal(priceTXB.Text);
+            Car = new Car(make, model, mpg, price);
+            DialogResult = DialogResult.OK;
         }
         catch (ArgumentException exception)
         {
@@ -110,7 +108,7 @@ public partial class CarForm : Form
             return false;
         }
 
-        if (isMakeDecimal)
+        if (!isMakeDecimal) return true;
         {
             const string message = "You did not enter an alphabetic value. Please enter an alphabetic value.";
             const string caption = "Error Detected in Input";
@@ -118,10 +116,9 @@ public partial class CarForm : Form
             MessageBox.Show(message, caption, buttons);
             return false;
         }
-        return true;
     }
 
-    private void ErrorMessage(string errorMessage)
+    private static void ErrorMessage(string errorMessage)
     {
         const string caption = "Error Message";
         const MessageBoxButtons buttons = MessageBoxButtons.OK;

@@ -53,7 +53,7 @@
             moneyAvailableLabel.Location = new Point(25, 180);
             moneyAvailableLabel.Name = "moneyAvailableLabel";
             moneyAvailableLabel.Size = new Size(156, 25);
-            moneyAvailableLabel.TabIndex = 1;
+            moneyAvailableLabel.TabIndex = 4;
             moneyAvailableLabel.Text = "Money Available:";
             // 
             // moneyAvailableTXB
@@ -68,7 +68,7 @@
             nameTXB.Location = new Point(200, 100);
             nameTXB.Name = "nameTXB";
             nameTXB.Size = new Size(130, 23);
-            nameTXB.TabIndex = 3;
+            nameTXB.TabIndex = 1;
             // 
             // addShopperBTN
             // 
@@ -76,7 +76,7 @@
             addShopperBTN.Location = new Point(98, 240);
             addShopperBTN.Name = "addShopperBTN";
             addShopperBTN.Size = new Size(190, 51);
-            addShopperBTN.TabIndex = 4;
+            addShopperBTN.TabIndex = 3;
             addShopperBTN.Text = "Add Shopper";
             addShopperBTN.UseVisualStyleBackColor = true;
             addShopperBTN.Click += addShopperBTN_Click;

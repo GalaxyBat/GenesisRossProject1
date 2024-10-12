@@ -1,0 +1,3 @@
+1. Wasn't able to fix the resharper issue to invert if statement for the PurchaseCar method as doing so caused an error
+2. Never used FindCarsByMake, FindCarsByModel, AddCar, and GetTotalCostOfPurchase
+3. I placed try catches around the code but wasn't able to figure out why for some errors the application closed instead of telling me the issue.
