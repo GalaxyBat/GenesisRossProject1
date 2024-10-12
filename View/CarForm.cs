@@ -26,7 +26,7 @@ public partial class CarForm : Form
         }
         catch (ArgumentException exception)
         {
-            Console.WriteLine(exception.Message);
+            ErrorMessage(exception.Message);
         }
         finally
         {
@@ -119,5 +119,12 @@ public partial class CarForm : Form
             return false;
         }
         return true;
+    }
+
+    private void ErrorMessage(string errorMessage)
+    {
+        const string caption = "Error Message";
+        const MessageBoxButtons buttons = MessageBoxButtons.OK;
+        MessageBox.Show(errorMessage, caption, buttons);
     }
 }

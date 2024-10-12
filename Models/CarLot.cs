@@ -79,10 +79,13 @@ public class CarLot
         Car? purchasedCar = null;
         foreach (var car in Inventory.ToList())
         {
-            if (car.Make == null || !car.Make.Equals(make, StringComparison.OrdinalIgnoreCase) ||
-                car.Model == null || !car.Model.Equals(model, StringComparison.OrdinalIgnoreCase)) continue;
-            purchasedCar = car;
-            Inventory.Remove(purchasedCar);
+            if ((car.Make != null && car.Make.Equals(make, StringComparison.OrdinalIgnoreCase)) &&
+                (car.Model != null && car.Model.Equals(model, StringComparison.OrdinalIgnoreCase)))
+            {
+                purchasedCar = car;
+                Inventory.Remove(purchasedCar);
+                break; 
+            }
         }
 
         return purchasedCar;
