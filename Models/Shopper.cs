@@ -51,7 +51,11 @@ public class Shopper
         Cars.Add(car);
         MoneyAvailable -= car.Price + CarLot.TaxRate;
     }
-   
+
+    /// <summary>
+    /// Creating the output for the Car Class
+    /// </summary>
+    /// <returns></returns>
     override
         public string ToString()
     {

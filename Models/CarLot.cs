@@ -190,6 +190,10 @@ public class CarLot
         return worstMpgCar;
     }
 
+    /// <summary>
+    /// Creating the output for the Car Class
+    /// </summary>
+    /// <returns></returns>
     override
         public string ToString()
     {

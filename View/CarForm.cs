@@ -2,14 +2,26 @@
 
 namespace GenesisRossProject1.View;
 
+/// <summary>
+/// Partial Class CarForm
+/// </summary>
 public partial class CarForm : Form
 {
     public Car Car = null!;
+
+    /// <summary>
+    /// The Constructor to create the Class CarForm
+    /// </summary>
     public CarForm()
     {
         InitializeComponent();
     }
 
+    /// <summary>
+    /// Adds car when clicking the button
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void addButton_Click(object sender, EventArgs e)
     {
         try
@@ -33,11 +45,20 @@ public partial class CarForm : Form
         
     }
 
+    /// <summary>
+    /// Closes the CarForm Form when clicking the button
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void cancelButton_Click(object sender, EventArgs e)
     {
         Close();
     }
 
+    /// <summary>
+    /// Checks to see if the user entry is valid or not
+    /// </summary>
+    /// <returns>true if it's valid, false if otherwise</returns>
     private bool IsValidUserEntry()
     {
         var isMakeDecimal = decimal.TryParse(makeTXB.Text, out _);
@@ -118,6 +139,10 @@ public partial class CarForm : Form
         }
     }
 
+    /// <summary>
+    /// Pops up an error message box if an error occurs
+    /// </summary>
+    /// <param name="errorMessage"></param>
     private static void ErrorMessage(string errorMessage)
     {
         const string caption = "Error Message";
